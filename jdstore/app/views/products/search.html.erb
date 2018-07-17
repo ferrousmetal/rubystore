@@ -1,0 +1,25 @@
+<div class="product-box">
+  <div class="container">
+    <!--=== 搜索结果，没有符合条件的数据 ===-->
+    <% if @products.blank?%>
+      <br>
+      <h2 class="search-info-title">亲，没有搜索到宝贝哦，请换个关键词</h2>
+    <% end %>
+
+    <% @products.each do |product| %>
+      <div class="col-xs-6 col-md-3">
+        <%= link_to product_path(product) do %>
+          <% if product.image.present? %>
+            <%= image_tag(product.image.thumb.url, class: "thumbnail") %>
+          <% else %>
+            <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+          <% end %>
+        <% end %>
+
+        <%= product.title %> 价格： <%= product.price %>
+
+      </div>
+    <% end %>
+
+  </div>
+</div>

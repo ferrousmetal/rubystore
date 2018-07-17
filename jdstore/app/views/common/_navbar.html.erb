@@ -1,0 +1,61 @@
+<nav class="navbar navbar-inverse"role="navigation" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">首页</a>
+    </div>
+
+          <div>
+            <form class="navbar-form navbar-left" role="search">
+              <%= form_tag search_products_path , :method => :get, :class => "form-search" do %>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="q" value="<%= params[:q] %>" placeholder="请输入搜索商品">
+                </div>
+                  <button type="submit" class="btn btn-default">搜索</button>
+              <% end %>
+            </form>
+          </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if current_user %>
+          <li>
+          <%= link_to("我的订单", account_orders_path) %>
+          </li>
+        <% end %>
+
+          <li>
+            <%= link_to carts_path do  %>
+              购物车 <i class="fa fa-shopping-cart"> </i> ( <%= current_cart.products.count %> )
+            <% end %>
+          </li>
+
+        <% if !current_user %>
+          <li><%= link_to("注册", new_user_registration_path) %> </li>
+          <li><%= link_to(content_tag(:i, '登录', class: 'fa fa-sign-in'), new_user_session_path) %></li>
+        <% else %>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Hi!, <%= current_user.email %>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <% if current_user.admin? %>
+                <li>
+                  <%= link_to("管理员入口", admin_products_path ) %>
+                </li>
+            <% end %>
+              <li>
+                <%= link_to(content_tag(:i, '退出登录', class: 'fa fa-sign-out'), destroy_user_session_path, method: :delete) %>
+              </li>
+            </ul>
+          </li>
+          <% end %>
+      </ul>
+
+
+      <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>

@@ -1,0 +1,39 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.left{
+width: 33%;
+height: 800px;
+background: url("cbk4.jpg") no-repeat;
+margin:40px 2px;
+padding:2px 2px 2px 2px;
+float:left;
+border-radius: 25PX;
+border:1px solid #8AC007;
+border-color: black;
+}
+
+.middle{
+width: 33%;
+height: 800px;
+background:url("cbk3.jpg") no-repeat;
+margin:40px 2px;
+padding:2px 2px 2px 2px;
+float:left;
+border:1px solid #8AC007;
+border-color: black;
+border-radius: 25PX;
+}
+
+.right{
+width: 33%;
+height: 800px;
+background:url("cbk2.jpg") no-repeat;
+margin:40px 2px;
+padding:2px 2px 2px 2px;
+float:left;
+border:1px solid #8AC007;
+border-color: black;
+border-radius: 25PX;
+}
